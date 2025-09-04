@@ -1,9 +1,7 @@
-# ref: https://github.com/McGill-NLP/bias-bench/blob/main/bias_bench/model/models.py
 import torch
 import transformers
 from functools import partial
 cache_dir = "/nlp/data/huggingface_cache"
-
 
 class _CAModel: # Base class for Conceptor-Aided (CA) models
     def __init__(self, model_name_or_path, negc):
@@ -21,7 +19,6 @@ class _CAModel: # Base class for Conceptor-Aided (CA) models
             return output
 
         self.func = partial(_hook, negc=negc)
-
 
 class CABertModel(_CAModel):
     def __new__(self, model_name_or_path, negc, output_hidden_states):
